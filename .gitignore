@@ -1,0 +1,8 @@
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.env
+.DS_Store
+*.venv
