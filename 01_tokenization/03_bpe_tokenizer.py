@@ -22,7 +22,7 @@ def get_word_freqs(text):
     freqs = Counter()
     for word in text.split():
         # Represent each word as a tuple of its chars, ending in </w>
-        symbols = tuple(list(word) + ["</w>"])
+        symbols = tuple(list(word) + ["</w>"])        
         freqs[symbols] += 1
     return freqs
 
@@ -32,7 +32,7 @@ def get_word_freqs(text):
 # ===================================================================
 def get_pair_counts(word_freqs):
     pairs = Counter()
-    for symbols, freq in word_freqs.items():
+    for symbols, freq in word_freqs.items():        
         for i in range(len(symbols) - 1):
             pairs[(symbols[i], symbols[i + 1])] += freq
     return pairs

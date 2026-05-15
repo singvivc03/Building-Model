@@ -1,0 +1,115 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#111827">
+    Three Ways to Tokenize the Same Sentence
+  </text>
+  <text x="450" y="54" text-anchor="middle" font-size="13" fill="#6b7280">
+    Input: "tokenization is fun"
+  </text>
+
+  <!-- ============ Column 1: Character ============ -->
+  <rect x="30" y="90" width="270" height="430" rx="12" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="165" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Character-level</text>
+
+  <!-- The token chips -->
+  <g font-family="ui-monospace, monospace" font-size="11">
+    <rect x="50" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="61" y="156" text-anchor="middle">t</text>
+    <rect x="76" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="87" y="156" text-anchor="middle">o</text>
+    <rect x="102" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="113" y="156" text-anchor="middle">k</text>
+    <rect x="128" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="139" y="156" text-anchor="middle">e</text>
+    <rect x="154" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="165" y="156" text-anchor="middle">n</text>
+    <rect x="180" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="191" y="156" text-anchor="middle">i</text>
+    <rect x="206" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="217" y="156" text-anchor="middle">z</text>
+    <rect x="232" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="243" y="156" text-anchor="middle">a</text>
+    <rect x="258" y="140" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="269" y="156" text-anchor="middle">t</text>
+
+    <rect x="50" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="61" y="186" text-anchor="middle">i</text>
+    <rect x="76" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="87" y="186" text-anchor="middle">o</text>
+    <rect x="102" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="113" y="186" text-anchor="middle">n</text>
+    <rect x="128" y="170" width="22" height="22" rx="4" fill="#dbeafe" stroke="#1d4ed8"/><text x="139" y="186" text-anchor="middle">␣</text>
+    <rect x="154" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="165" y="186" text-anchor="middle">i</text>
+    <rect x="180" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="191" y="186" text-anchor="middle">s</text>
+    <rect x="206" y="170" width="22" height="22" rx="4" fill="#dbeafe" stroke="#1d4ed8"/><text x="217" y="186" text-anchor="middle">␣</text>
+    <rect x="232" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="243" y="186" text-anchor="middle">f</text>
+    <rect x="258" y="170" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="269" y="186" text-anchor="middle">u</text>
+
+    <rect x="50" y="200" width="22" height="22" rx="4" fill="#fff" stroke="#1d4ed8"/><text x="61" y="216" text-anchor="middle">n</text>
+  </g>
+
+  <text x="165" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">19 tokens</text>
+
+  <text x="50" y="285" font-size="12" font-weight="700" fill="#15803d">✓ Pros</text>
+  <text x="50" y="305" font-size="11" fill="#374151">Vocab is tiny (~100)</text>
+  <text x="50" y="322" font-size="11" fill="#374151">No out-of-vocab — ever</text>
+  <text x="50" y="339" font-size="11" fill="#374151">Easy to implement</text>
+
+  <text x="50" y="375" font-size="12" font-weight="700" fill="#b91c1c">✗ Cons</text>
+  <text x="50" y="395" font-size="11" fill="#374151">Very long sequences</text>
+  <text x="50" y="412" font-size="11" fill="#374151">→ more compute, slower</text>
+  <text x="50" y="429" font-size="11" fill="#374151">Model must learn the</text>
+  <text x="50" y="446" font-size="11" fill="#374151">concept of a "word"</text>
+  <text x="50" y="463" font-size="11" fill="#374151">from scratch</text>
+
+  <text x="50" y="497" font-size="11" font-style="italic" fill="#6b7280">Used by: very early</text>
+  <text x="50" y="512" font-size="11" font-style="italic" fill="#6b7280">RNNs; almost no LLMs</text>
+
+  <!-- ============ Column 2: Word ============ -->
+  <rect x="315" y="90" width="270" height="430" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="450" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#15803d">Word-level</text>
+
+  <g font-family="ui-monospace, monospace" font-size="11">
+    <rect x="335" y="150" width="100" height="28" rx="4" fill="#fff" stroke="#15803d"/><text x="385" y="169" text-anchor="middle">tokenization</text>
+    <rect x="445" y="150" width="30" height="28" rx="4" fill="#fff" stroke="#15803d"/><text x="460" y="169" text-anchor="middle">is</text>
+    <rect x="485" y="150" width="40" height="28" rx="4" fill="#fff" stroke="#15803d"/><text x="505" y="169" text-anchor="middle">fun</text>
+  </g>
+
+  <text x="450" y="208" text-anchor="middle" font-size="13" font-weight="600" fill="#15803d">3 tokens</text>
+
+  <text x="335" y="248" font-size="12" font-weight="700" fill="#15803d">✓ Pros</text>
+  <text x="335" y="268" font-size="11" fill="#374151">Short sequences</text>
+  <text x="335" y="285" font-size="11" fill="#374151">Intuitive — 1 word = 1 token</text>
+  <text x="335" y="302" font-size="11" fill="#374151">Each token carries</text>
+  <text x="335" y="319" font-size="11" fill="#374151">lots of meaning</text>
+
+  <text x="335" y="355" font-size="12" font-weight="700" fill="#b91c1c">✗ Cons</text>
+  <text x="335" y="375" font-size="11" fill="#374151">Vocab explodes (100k+)</text>
+  <text x="335" y="392" font-size="11" fill="#374151">Out-of-vocab problem:</text>
+  <text x="335" y="409" font-size="11" fill="#374151">"unicorn" → &lt;UNK&gt;</text>
+  <text x="335" y="426" font-size="11" fill="#374151">Bad for typos, code,</text>
+  <text x="335" y="443" font-size="11" fill="#374151">names, other languages</text>
+  <text x="335" y="460" font-size="11" fill="#374151">Inflections explode it more</text>
+  <text x="335" y="477" font-size="11" fill="#374151">(run, runs, ran, running...)</text>
+
+  <text x="335" y="510" font-size="11" font-style="italic" fill="#6b7280">Used by: early Word2vec era</text>
+
+  <!-- ============ Column 3: BPE (highlighted) ============ -->
+  <rect x="600" y="90" width="270" height="430" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="3"/>
+  <text x="735" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#b45309">BPE (Subword) ★</text>
+  <text x="735" y="135" text-anchor="middle" font-size="11" fill="#92400e">What real LLMs use</text>
+
+  <g font-family="ui-monospace, monospace" font-size="11">
+    <rect x="620" y="155" width="50" height="28" rx="4" fill="#fff" stroke="#b45309"/><text x="645" y="174" text-anchor="middle">token</text>
+    <rect x="680" y="155" width="58" height="28" rx="4" fill="#fff" stroke="#b45309"/><text x="709" y="174" text-anchor="middle">ization</text>
+    <rect x="748" y="155" width="30" height="28" rx="4" fill="#fff" stroke="#b45309"/><text x="763" y="174" text-anchor="middle">is</text>
+    <rect x="788" y="155" width="40" height="28" rx="4" fill="#fff" stroke="#b45309"/><text x="808" y="174" text-anchor="middle">fun</text>
+  </g>
+
+  <text x="735" y="215" text-anchor="middle" font-size="13" font-weight="600" fill="#b45309">4 tokens</text>
+
+  <text x="620" y="252" font-size="12" font-weight="700" fill="#15803d">✓ Pros</text>
+  <text x="620" y="272" font-size="11" fill="#374151">No out-of-vocab — ever</text>
+  <text x="620" y="289" font-size="11" fill="#374151">(falls back to bytes)</text>
+  <text x="620" y="306" font-size="11" fill="#374151">Common chunks → 1 token</text>
+  <text x="620" y="323" font-size="11" fill="#374151">Rare strings → smaller chunks</text>
+  <text x="620" y="340" font-size="11" fill="#374151">Vocabulary is LEARNED</text>
+  <text x="620" y="357" font-size="11" fill="#374151">from the actual data</text>
+
+  <text x="620" y="390" font-size="12" font-weight="700" fill="#b91c1c">✗ Cons</text>
+  <text x="620" y="410" font-size="11" fill="#374151">Tokenizer must itself</text>
+  <text x="620" y="427" font-size="11" fill="#374151">be trained (one-time cost)</text>
+  <text x="620" y="444" font-size="11" fill="#374151">Tokens don't always</text>
+  <text x="620" y="461" font-size="11" fill="#374151">align with "words"</text>
+
+  <text x="620" y="497" font-size="11" font-style="italic" fill="#92400e">Used by: Claude, GPT-4,</text>
+  <text x="620" y="512" font-size="11" font-style="italic" fill="#92400e">Llama, Gemini, Mistral...</text>
+</svg>

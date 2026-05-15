@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#111827">
+    How BPE Learns Its Vocabulary
+  </text>
+  <text x="450" y="56" text-anchor="middle" font-size="13" fill="#6b7280">
+    Corpus: "low low low low low lower lower newest newest newest"
+  </text>
+  <text x="450" y="74" text-anchor="middle" font-size="12" fill="#6b7280" font-style="italic">
+    Each step finds the most frequent adjacent pair and merges it into a new token.
+  </text>
+
+  <!-- Helper styles via inline -->
+  <g font-family="ui-monospace, monospace" font-size="12" fill="#111827">
+
+    <!-- Step 0: initial char-level -->
+    <rect x="30" y="100" width="840" height="58" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1"/>
+    <text x="40" y="120" font-size="11" font-weight="700" fill="#374151" font-family="-apple-system, sans-serif">Step 0 — Initial vocabulary = every character</text>
+    <text x="40" y="145">low low low low low &#xb7; lower lower &#xb7; newest newest newest   (each letter is its own token)</text>
+
+    <!-- Step 1 -->
+    <rect x="30" y="170" width="840" height="68" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="40" y="190" font-size="11" font-weight="700" fill="#1d4ed8" font-family="-apple-system, sans-serif">
+      Step 1 — Most common pair: ('l','o') appears 7 times  →  merge into "lo"
+    </text>
+    <text x="40" y="215"><tspan fill="#1d4ed8" font-weight="700">lo</tspan>w <tspan fill="#1d4ed8" font-weight="700">lo</tspan>w <tspan fill="#1d4ed8" font-weight="700">lo</tspan>w <tspan fill="#1d4ed8" font-weight="700">lo</tspan>w <tspan fill="#1d4ed8" font-weight="700">lo</tspan>w &#xb7; <tspan fill="#1d4ed8" font-weight="700">lo</tspan>wer <tspan fill="#1d4ed8" font-weight="700">lo</tspan>wer &#xb7; newest newest newest</text>
+
+    <!-- Step 2 -->
+    <rect x="30" y="250" width="840" height="68" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+    <text x="40" y="270" font-size="11" font-weight="700" fill="#15803d" font-family="-apple-system, sans-serif">
+      Step 2 — Most common pair: ('lo','w') appears 7 times  →  merge into "low"
+    </text>
+    <text x="40" y="295"><tspan fill="#15803d" font-weight="700">low</tspan> <tspan fill="#15803d" font-weight="700">low</tspan> <tspan fill="#15803d" font-weight="700">low</tspan> <tspan fill="#15803d" font-weight="700">low</tspan> <tspan fill="#15803d" font-weight="700">low</tspan> &#xb7; <tspan fill="#15803d" font-weight="700">low</tspan>er <tspan fill="#15803d" font-weight="700">low</tspan>er &#xb7; newest newest newest</text>
+
+    <!-- Step 3 -->
+    <rect x="30" y="330" width="840" height="68" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+    <text x="40" y="350" font-size="11" font-weight="700" fill="#b45309" font-family="-apple-system, sans-serif">
+      Step 3 — Most common pair: ('e','s') appears 3 times  →  merge into "es"
+    </text>
+    <text x="40" y="375">low low low low low &#xb7; lower lower &#xb7; new<tspan fill="#b45309" font-weight="700">es</tspan>t new<tspan fill="#b45309" font-weight="700">es</tspan>t new<tspan fill="#b45309" font-weight="700">es</tspan>t</text>
+
+    <!-- Step 4 -->
+    <rect x="30" y="410" width="840" height="68" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+    <text x="40" y="430" font-size="11" font-weight="700" fill="#b91c1c" font-family="-apple-system, sans-serif">
+      Step 4 — Most common pair: ('es','t') appears 3 times  →  merge into "est"
+    </text>
+    <text x="40" y="455">low low low low low &#xb7; lower lower &#xb7; new<tspan fill="#b91c1c" font-weight="700">est</tspan> new<tspan fill="#b91c1c" font-weight="700">est</tspan> new<tspan fill="#b91c1c" font-weight="700">est</tspan></text>
+
+    <!-- Step N: many merges later -->
+    <rect x="30" y="490" width="840" height="68" rx="8" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.5"/>
+    <text x="40" y="510" font-size="11" font-weight="700" fill="#6d28d9" font-family="-apple-system, sans-serif">
+      …after many more merges (eventually): "low", "lower", "newest" each become single tokens
+    </text>
+    <text x="40" y="535"><tspan fill="#6d28d9" font-weight="700">low low low low low</tspan> &#xb7; <tspan fill="#6d28d9" font-weight="700">lower lower</tspan> &#xb7; <tspan fill="#6d28d9" font-weight="700">newest newest newest</tspan></text>
+  </g>
+
+  <!-- Final vocab callout -->
+  <text x="450" y="595" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">
+    Final learned vocabulary now includes: { l, o, w, e, r, n, s, t, lo, low, es, est, lower, newest, ... }
+  </text>
+  <text x="450" y="618" text-anchor="middle" font-size="11" font-style="italic" fill="#6b7280">
+    Frequent chunks become single tokens. Rare strings still tokenize fine — they just use shorter chunks.
+  </text>
+</svg>
