@@ -1,0 +1,117 @@
+<svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#374151"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#111827">
+    The Tokenization Family Tree
+  </text>
+  <text x="500" y="58" text-anchor="middle" font-size="13" fill="#6b7280">
+    All current tokenizers descend from one of three families. A fourth — tokenizer-free — is the active research frontier.
+  </text>
+
+  <!-- Root -->
+  <rect x="380" y="84" width="240" height="42" rx="8" fill="#111827"/>
+  <text x="500" y="111" text-anchor="middle" font-size="14" font-weight="700" fill="white">Tokenization approaches</text>
+
+  <!-- 4 family lanes -->
+  <line x1="500" y1="126" x2="120" y2="160" stroke="#9ca3af" stroke-width="1.5"/>
+  <line x1="500" y1="126" x2="370" y2="160" stroke="#9ca3af" stroke-width="1.5"/>
+  <line x1="500" y1="126" x2="630" y2="160" stroke="#9ca3af" stroke-width="1.5"/>
+  <line x1="500" y1="126" x2="880" y2="160" stroke="#9ca3af" stroke-width="1.5"/>
+
+  <!-- ===== Family 1: Word-level ===== -->
+  <rect x="30" y="160" width="180" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="120" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">Word-level</text>
+  <text x="120" y="198" text-anchor="middle" font-size="10" fill="#7f1d1d">obsolete for LLMs</text>
+
+  <rect x="30" y="225" width="180" height="80" rx="6" fill="#fff" stroke="#fca5a5"/>
+  <text x="40" y="244" font-size="11" font-weight="600" fill="#111827">Word2Vec era</text>
+  <text x="40" y="262" font-size="11" fill="#374151">• Each word = 1 token</text>
+  <text x="40" y="278" font-size="11" fill="#374151">• Huge OOV problem</text>
+  <text x="40" y="294" font-size="11" fill="#374151">• Killed by transformers</text>
+
+  <!-- ===== Family 2: Character-level ===== -->
+  <rect x="280" y="160" width="180" height="46" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <text x="370" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">Character-level</text>
+  <text x="370" y="198" text-anchor="middle" font-size="10" fill="#92400e">rare in modern LLMs</text>
+
+  <rect x="280" y="225" width="180" height="80" rx="6" fill="#fff" stroke="#fcd34d"/>
+  <text x="290" y="244" font-size="11" font-weight="600" fill="#111827">RNN era</text>
+  <text x="290" y="262" font-size="11" fill="#374151">• Each char = 1 token</text>
+  <text x="290" y="278" font-size="11" fill="#374151">• Tiny vocab (~100)</text>
+  <text x="290" y="294" font-size="11" fill="#374151">• Sequences too long for</text>
+  <text x="290" y="310" font-size="11" fill="#374151">  modern transformers</text>
+
+  <!-- ===== Family 3: Subword (the winner) ===== -->
+  <rect x="540" y="160" width="180" height="46" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/>
+  <text x="630" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">Subword ★</text>
+  <text x="630" y="198" text-anchor="middle" font-size="10" fill="#166534">used by every prod LLM</text>
+
+  <!-- 3 subword variants -->
+  <rect x="540" y="225" width="180" height="90" rx="6" fill="#fff" stroke="#86efac"/>
+  <text x="550" y="244" font-size="11" font-weight="700" fill="#15803d">BPE (2016)</text>
+  <text x="550" y="262" font-size="11" fill="#374151">Pick pair with highest count</text>
+  <text x="550" y="278" font-size="11" fill="#374151">Variant: byte-level BPE</text>
+  <text x="550" y="298" font-size="11" fill="#374151" font-style="italic">→ GPT-2/3/4, Claude,</text>
+  <text x="550" y="312" font-size="11" fill="#374151" font-style="italic">   Llama, Mistral</text>
+
+  <rect x="540" y="330" width="180" height="80" rx="6" fill="#fff" stroke="#86efac"/>
+  <text x="550" y="349" font-size="11" font-weight="700" fill="#15803d">WordPiece (2012)</text>
+  <text x="550" y="367" font-size="11" fill="#374151">Pick by likelihood ratio:</text>
+  <text x="550" y="382" font-size="11" fill="#374151" font-family="ui-monospace, monospace">  count(ab) / count(a)·count(b)</text>
+  <text x="550" y="400" font-size="11" fill="#374151" font-style="italic">→ BERT, DistilBERT</text>
+
+  <rect x="540" y="425" width="180" height="90" rx="6" fill="#fff" stroke="#86efac"/>
+  <text x="550" y="444" font-size="11" font-weight="700" fill="#15803d">Unigram LM (2018)</text>
+  <text x="550" y="462" font-size="11" fill="#374151">Start big, prune by likelihood;</text>
+  <text x="550" y="478" font-size="11" fill="#374151">Viterbi at tokenize-time</text>
+  <text x="550" y="498" font-size="11" fill="#374151" font-style="italic">→ T5, ALBERT, mBART,</text>
+  <text x="550" y="512" font-size="11" fill="#374151" font-style="italic">   Gemini (likely)</text>
+
+  <rect x="540" y="530" width="180" height="80" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-dasharray="4,2"/>
+  <text x="550" y="549" font-size="11" font-weight="700" fill="#15803d">SentencePiece</text>
+  <text x="550" y="565" font-size="11" fill="#374151" font-style="italic">(framework, not algorithm —</text>
+  <text x="550" y="580" font-size="11" fill="#374151" font-style="italic">hosts BPE or Unigram)</text>
+  <text x="550" y="600" font-size="11" fill="#374151" font-style="italic">→ Llama, T5, Gemini</text>
+
+  <!-- ===== Family 4: Tokenizer-free (research) ===== -->
+  <rect x="790" y="160" width="180" height="46" rx="8" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="880" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#6d28d9">Tokenizer-free</text>
+  <text x="880" y="198" text-anchor="middle" font-size="10" fill="#5b21b6">active research frontier</text>
+
+  <rect x="790" y="225" width="180" height="90" rx="6" fill="#fff" stroke="#c4b5fd"/>
+  <text x="800" y="244" font-size="11" font-weight="700" fill="#6d28d9">Pure byte/char</text>
+  <text x="800" y="262" font-size="11" fill="#374151">Model reads UTF-8 bytes</text>
+  <text x="800" y="278" font-size="11" fill="#374151">No tokenizer at all</text>
+  <text x="800" y="298" font-size="11" fill="#374151" font-style="italic">→ ByT5 (2021),</text>
+  <text x="800" y="312" font-size="11" fill="#374151" font-style="italic">   CANINE (2021)</text>
+
+  <rect x="790" y="330" width="180" height="100" rx="6" fill="#fff" stroke="#c4b5fd"/>
+  <text x="800" y="349" font-size="11" font-weight="700" fill="#6d28d9">Hierarchical byte</text>
+  <text x="800" y="367" font-size="11" fill="#374151">Group bytes into 'patches'</text>
+  <text x="800" y="382" font-size="11" fill="#374151">to make attention cheap</text>
+  <text x="800" y="402" font-size="11" fill="#374151" font-style="italic">→ MEGABYTE (Meta 2023),</text>
+  <text x="800" y="416" font-size="11" fill="#374151" font-style="italic">   BLT (Meta 2024)</text>
+
+  <rect x="790" y="445" width="180" height="70" rx="6" fill="#faf5ff" stroke="#6d28d9" stroke-dasharray="4,2"/>
+  <text x="800" y="464" font-size="11" font-weight="700" fill="#6d28d9">Open questions</text>
+  <text x="800" y="482" font-size="11" fill="#374151">• Slower per token</text>
+  <text x="800" y="498" font-size="11" fill="#374151">• Needs new architecture</text>
+  <text x="800" y="514" font-size="11" fill="#374151">• Not yet shipped to users</text>
+
+  <!-- Bottom legend / takeaway -->
+  <rect x="60" y="660" width="880" height="80" rx="8" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="500" y="685" text-anchor="middle" font-size="13" font-weight="700" fill="#111827">
+    Where Claude sits today
+  </text>
+  <text x="500" y="708" text-anchor="middle" font-size="12" fill="#374151">
+    Byte-level BPE with a ~100k vocabulary — same family as GPT-4's cl100k_base.
+  </text>
+  <text x="500" y="728" text-anchor="middle" font-size="12" fill="#374151" font-style="italic">
+    The "better" tokenizer-free family exists but stays in research because attention is still O(n²) and bytes blow up the sequence length.
+  </text>
+</svg>

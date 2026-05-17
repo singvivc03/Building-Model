@@ -43,18 +43,18 @@ def get_pair_counts(word_freqs):
 # This is the "learn one new token" step.
 # ===================================================================
 def merge_pair(pair, word_freqs):
-    a, b = pair
+    a, b = pair    
     new_word_freqs = {}
     for symbols, freq in word_freqs.items():
         new_symbols = []
         i = 0
         while i < len(symbols):
-            # If symbols[i:i+2] is the pair we're merging, glue them.
+            # If symbols[i:i+2] is the pair we're merging, glue them.                    
             if i < len(symbols) - 1 and symbols[i] == a and symbols[i + 1] == b:
                 new_symbols.append(a + b)
                 i += 2
             else:
-                new_symbols.append(symbols[i])
+                new_symbols.append(symbols[i]) #low
                 i += 1
         new_word_freqs[tuple(new_symbols)] = freq
     return new_word_freqs

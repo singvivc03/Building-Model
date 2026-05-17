@@ -1,0 +1,89 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#374151"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#111827">
+    An Embedding is Just a Lookup Table
+  </text>
+  <text x="450" y="54" text-anchor="middle" font-size="13" fill="#6b7280">
+    Token ID → grab the corresponding row of a (vocab_size × d_model) matrix → that's your vector.
+  </text>
+
+  <!-- ===== Top: token IDs ===== -->
+  <text x="60" y="100" font-size="12" fill="#6b7280">Tokenized input:</text>
+  <g font-family="ui-monospace, monospace" font-size="14">
+    <rect x="60" y="115" width="80" height="32" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="100" y="136" text-anchor="middle">"the"</text>
+    <rect x="155" y="115" width="80" height="32" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="195" y="136" text-anchor="middle">"cat"</text>
+    <rect x="250" y="115" width="80" height="32" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="290" y="136" text-anchor="middle">"sat"</text>
+  </g>
+
+  <g font-family="ui-monospace, monospace" font-size="13" fill="#1d4ed8">
+    <text x="100" y="170" text-anchor="middle">id=89</text>
+    <text x="195" y="170" text-anchor="middle">id=412</text>
+    <text x="290" y="170" text-anchor="middle">id=905</text>
+  </g>
+
+  <!-- arrows down -->
+  <line x1="100" y1="180" x2="100" y2="210" stroke="#374151" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="195" y1="180" x2="195" y2="210" stroke="#374151" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="290" y1="180" x2="290" y2="210" stroke="#374151" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ===== Middle: the embedding matrix ===== -->
+  <text x="525" y="100" font-size="12" fill="#6b7280">Embedding matrix  E  with shape (vocab_size, d_model):</text>
+  <rect x="525" y="115" width="320" height="240" rx="6" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="685" y="142" text-anchor="middle" font-size="11" fill="#6b7280" font-style="italic">d_model dimensions →</text>
+
+  <!-- Some rows highlighted -->
+  <g font-family="ui-monospace, monospace" font-size="11">
+    <text x="540" y="170" fill="#9ca3af">row 0   :  0.12  -0.43   0.08  ...   0.91</text>
+    <text x="540" y="190" fill="#9ca3af">row 1   :  0.05   0.22  -0.11  ...   0.34</text>
+    <text x="540" y="210" fill="#9ca3af">  ...</text>
+
+    <rect x="535" y="225" width="305" height="18" fill="#dbeafe" stroke="#1d4ed8"/>
+    <text x="540" y="238" fill="#1d4ed8" font-weight="700">row 89  :  0.71  -0.20   0.51  ...  -0.14</text>
+
+    <text x="540" y="258" fill="#9ca3af">  ...</text>
+
+    <rect x="535" y="265" width="305" height="18" fill="#fef3c7" stroke="#b45309"/>
+    <text x="540" y="278" fill="#b45309" font-weight="700">row 412 :  0.92   0.13  -0.04  ...   0.66</text>
+
+    <text x="540" y="298" fill="#9ca3af">  ...</text>
+
+    <rect x="535" y="305" width="305" height="18" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="540" y="318" fill="#15803d" font-weight="700">row 905 :  0.31  -0.55   0.78  ...   0.02</text>
+
+    <text x="540" y="338" fill="#9ca3af">  ...</text>
+  </g>
+
+  <!-- arrows from token IDs to matrix rows -->
+  <path d="M 110 215 Q 200 230 530 234" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <path d="M 195 215 Q 280 250 530 274" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <path d="M 290 215 Q 380 280 530 314" fill="none" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <text x="60" y="240" font-size="11" font-style="italic" fill="#6b7280">"Look up</text>
+  <text x="60" y="256" font-size="11" font-style="italic" fill="#6b7280">row 89..."</text>
+
+  <!-- ===== Bottom: output stack of vectors ===== -->
+  <text x="60" y="395" font-size="12" fill="#6b7280">Output (one vector per token):</text>
+  <g font-family="ui-monospace, monospace" font-size="11">
+    <rect x="60" y="410" width="240" height="20" rx="4" fill="#dbeafe" stroke="#1d4ed8"/>
+    <text x="180" y="425" text-anchor="middle" fill="#1d4ed8">[0.71, -0.20, 0.51, ..., -0.14]   (the "the" vector)</text>
+
+    <rect x="320" y="410" width="240" height="20" rx="4" fill="#fef3c7" stroke="#b45309"/>
+    <text x="440" y="425" text-anchor="middle" fill="#b45309">[0.92, 0.13, -0.04, ..., 0.66]   ("cat")</text>
+
+    <rect x="580" y="410" width="240" height="20" rx="4" fill="#dcfce7" stroke="#15803d"/>
+    <text x="700" y="425" text-anchor="middle" fill="#15803d">[0.31, -0.55, 0.78, ..., 0.02]   ("sat")</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="450" y="448" text-anchor="middle" font-size="11" fill="#374151" font-style="italic">
+    A matrix lookup is the entire computation. The numbers in those rows are what training learns.
+  </text>
+</svg>
